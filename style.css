@@ -1,198 +1,96 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+body{
+    background:linear-gradient(#020111,#0b1d3a);
+    height:100vh;
+    overflow:hidden;
+    color:white;
 }
 
-body {
-    height: 100vh;
-    background: linear-gradient(135deg, #8b0000, #ff4d4d);
-    overflow: hidden;
-    color: white;
+/* SNOW */
+.snow{position:absolute;width:100%;height:100%;pointer-events:none}
+.snow span{
+    position:absolute;top:-10px;width:5px;height:5px;
+    background:white;border-radius:50%;
+    animation:fall linear infinite;
+}
+@keyframes fall{to{transform:translateY(110vh)}}
+
+/* SANTA */
+.santa{
+    position:absolute;
+    top:80px;
+    left:-350px;
+    width:280px;
+    z-index:5;
+    animation:santaFly 20s linear infinite, santaFloat 3s ease-in-out infinite;
+}
+.santa img{
+    width:100%;
+    filter:drop-shadow(0 0 25px rgba(255,0,0,.6));
+}
+@keyframes santaFly{to{left:110%}}
+@keyframes santaFloat{50%{transform:translateY(-25px)}}
+
+/* START */
+.start{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;
+    justify-content:center;align-items:center;
+    background:radial-gradient(#0b2b5b,#020111);
+}
+.start h1{
+    font-family:Great Vibes,cursive;
+    font-size:48px;
+    margin-bottom:20px;
+}
+.start button{
+    padding:14px 30px;
+    border:none;border-radius:30px;
+    background:gold;cursor:pointer;
 }
 
-/* ================= SALJU ================= */
-.snow {
-    position: fixed;
-    top: -10px;
-    color: white;
-    animation: fall linear infinite;
-    z-index: 1;
+/* LETTER */
+.letter{
+    position:absolute;inset:0;
+    display:flex;justify-content:center;align-items:center;
+    opacity:0;transform:scale(.8);
+    transition:1.5s;
 }
+.letter.show{opacity:1;transform:scale(1)}
 
-@keyframes fall {
-    to {
-        transform: translateY(110vh);
-    }
+.card{
+    background:white;color:#333;
+    width:85%;max-width:420px;
+    padding:30px;border-radius:20px;
+    text-align:center;position:relative;
+    box-shadow:0 0 40px rgba(255,215,0,.6);
 }
-
-/* ================= SANTA TRAIN ================= */
-.santa-train {
-    position: fixed;
-    bottom: 30px;
-    left: -350px;
-    width: 300px;
-    animation: trainMove 20s linear infinite;
-    z-index: 2;
-    pointer-events: none;
+.card h2{
+    font-family:Great Vibes,cursive;
+    color:#b30000;font-size:34px;margin-bottom:15px;
 }
+.card p{font-size:14px;line-height:1.7}
 
-.santa-train img {
-    width: 100%;
-    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.4));
+/* LIGHT ROOT */
+.lights{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);width:100%;height:80px}
+.lights span{
+    position:absolute;bottom:0;
+    width:12px;height:12px;border-radius:50%;
+    animation:blink 2s infinite alternate;
 }
-
-@keyframes trainMove {
-    from { left: -350px; }
-    to { left: 110%; }
-}
-
-/* ================= POHON ================= */
-.tree {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    font-size: 70px;
-    animation: glow 2s infinite;
-    z-index: 2;
-}
-
-@keyframes glow {
-    0%,100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-
-/* ================= CONTAINER ================= */
-.container {
-    position: relative;
-    z-index: 5;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.subtitle {
-    margin-bottom: 30px;
-}
-
-/* ================= AMPL0P ================= */
-.envelope {
-    position: relative;
-    width: 220px;
-    height: 140px;
-    cursor: pointer;
-}
-
-.body {
-    width: 100%;
-    height: 100%;
-    background: white;
-    border-radius: 0 0 20px 20px;
-}
-
-.flap {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #ffd6d6;
-    clip-path: polygon(0 0, 50% 55%, 100% 0);
-    transform-origin: top;
-    transition: 0.8s ease;
-}
-
-.paper {
-    position: absolute;
-    width: 180px;
-    height: 110px;
-    background: white;
-    left: 50%;
-    bottom: 10px;
-    transform: translateX(-50%);
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    transition: 1s ease;
-}
-
-.envelope.open .flap {
-    transform: rotateX(180deg);
-}
-
-.envelope.open .paper {
-    transform: translate(-50%, -120%);
-}
-
-/* ================= SURAT ================= */
-.letter-wrapper {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.75);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-}
-
-.letter {
-    background: white;
-    color: #333;
-    padding: 30px;
-    width: 90%;
-    max-width: 380px;
-    border-radius: 20px;
-    text-align: center;
-    animation: zoomIn 1s ease;
-}
-
-@keyframes zoomIn {
-    from { transform: scale(0.7); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-/* ================= LAMPU NATAL ================= */
-.christmas-lights {
-    border: 6px solid transparent;
-    border-image: repeating-linear-gradient(
-        45deg,
-        red 0 10px,
-        yellow 10px 20px,
-        green 20px 30px,
-        blue 30px 40px
-    ) 10;
-    animation: blink 1s infinite alternate;
-}
-
-@keyframes blink {
-    0% { filter: brightness(1); }
-    100% { filter: brightness(1.4); }
-}
-
-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: #b30000;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-  }
-
-.letter-text {
-    font-family: 'Dancing Script', cursive;
-    font-size: 20px;
-    line-height: 1.8;
-}
-
-.signature {
-    font-family: 'Dancing Script', cursive;
-    font-size: 16px;
-    margin-top: 25px;
-    text-align: center;
-    color: #b30000;
+@keyframes blink{to{opacity:1}}
+.l1{left:10%;background:red}
+.l2{left:25%;background:gold}
+.l3{left:40%;background:lime}
+.l4{left:55%;background:cyan}
+.l5{left:70%;background:hotpink}
+.l6{left:85%;background:orange}
+.root{
+    position:absolute;bottom:10px;left:50%;
+    width:180px;height:60px;
+    border:3px solid #2e7d32;border-top:none;
+    border-radius:0 0 60px 60px;
+    transform:translateX(-50%);
 }
