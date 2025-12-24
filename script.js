@@ -1,28 +1,20 @@
-// ================= SALJU =================
-const snowContainer = document.querySelector(".snow-container");
+const snow = document.getElementById("snow");
+const bell = document.getElementById("bell");
 
-for (let i = 0; i < 40; i++) {
-    const snow = document.createElement("div");
-    snow.className = "snow";
-    snow.innerHTML = "❄";
-    snow.style.left = Math.random() * 100 + "vw";
-    snow.style.animationDuration = (Math.random() * 5 + 5) + "s";
-    snow.style.fontSize = (Math.random() * 10 + 10) + "px";
-    snowContainer.appendChild(snow);
+for(let i=0;i<60;i++){
+    let s=document.createElement("span");
+    s.style.left=Math.random()*100+"%";
+    s.style.animationDuration=5+Math.random()*5+"s";
+    snow.appendChild(s);
 }
 
-// ================= AMPL0P =================
-function openEnvelope() {
-    const envelope = document.getElementById("envelope");
-    const letter = document.getElementById("letter");
-
-    envelope.classList.add("open");
-
-    setTimeout(() => {
-        letter.style.display = "flex";
-    }, 1200);
+function openLetter(){
+    document.getElementById("start").style.display="none";
+    document.getElementById("letter").classList.add("show");
+    bell.play();
 }
 
-function closeLetter() {
-    document.getElementById("letter").style.display = "none";
-}
+setInterval(()=>{
+    bell.currentTime=0;
+    bell.play();
+},20000);
