@@ -1,0 +1,184 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #8b0000, #ff4d4d);
+    overflow: hidden;
+    color: white;
+}
+
+/* ================= SALJU ================= */
+.snow {
+    position: fixed;
+    top: -10px;
+    color: white;
+    animation: fall linear infinite;
+    z-index: 1;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+    }
+}
+
+/* ================= SANTA TRAIN ================= */
+.santa-train {
+    position: fixed;
+    bottom: 30px;
+    left: -350px;
+    width: 300px;
+    animation: trainMove 20s linear infinite;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.santa-train img {
+    width: 100%;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.4));
+}
+
+@keyframes trainMove {
+    from { left: -350px; }
+    to { left: 110%; }
+}
+
+/* ================= POHON ================= */
+.tree {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 70px;
+    animation: glow 2s infinite;
+    z-index: 2;
+}
+
+@keyframes glow {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* ================= CONTAINER ================= */
+.container {
+    position: relative;
+    z-index: 5;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.subtitle {
+    margin-bottom: 30px;
+}
+
+/* ================= AMPL0P ================= */
+.envelope {
+    position: relative;
+    width: 220px;
+    height: 140px;
+    cursor: pointer;
+}
+
+.body {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 0 0 20px 20px;
+}
+
+.flap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ffd6d6;
+    clip-path: polygon(0 0, 50% 55%, 100% 0);
+    transform-origin: top;
+    transition: 0.8s ease;
+}
+
+.paper {
+    position: absolute;
+    width: 180px;
+    height: 110px;
+    background: white;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    transition: 1s ease;
+}
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open .paper {
+    transform: translate(-50%, -120%);
+}
+
+/* ================= SURAT ================= */
+.letter-wrapper {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.letter {
+    background: white;
+    color: #333;
+    padding: 30px;
+    width: 90%;
+    max-width: 380px;
+    border-radius: 20px;
+    text-align: center;
+    animation: zoomIn 1s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* ================= LAMPU NATAL ================= */
+.christmas-lights {
+    border: 6px solid transparent;
+    border-image: repeating-linear-gradient(
+        45deg,
+        red 0 10px,
+        yellow 10px 20px,
+        green 20px 30px,
+        blue 30px 40px
+    ) 10;
+    animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+    0% { filter: brightness(1); }
+    100% { filter: brightness(1.4); }
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #b30000;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
