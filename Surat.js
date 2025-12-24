@@ -10,3 +10,7 @@ for(let i=0;i<60;i++){
 function openLetter(){
     document.getElementById("letter").classList.add("show");
 }
+
+window.onload = () => {
+    document.getElementById("letter").classList.add("show");
+};
