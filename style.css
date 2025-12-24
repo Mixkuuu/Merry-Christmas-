@@ -182,3 +182,17 @@ button {
     border-radius: 20px;
     cursor: pointer;
   }
+
+.letter-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+.signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 16px;
+    margin-top: 25px;
+    text-align: center;
+    color: #b30000;
+}
