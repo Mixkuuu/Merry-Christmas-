@@ -1,261 +1,50 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<title>Hadiah Natal Untuk Kamu ❤️</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
-body{
-    height:100vh;
-    background:linear-gradient(135deg,#8b0000,#ff4d4d);
-    overflow:hidden;
-    color:white;
-}
-
-/* SALJU */
-.snow{
-    position:fixed;
-    top:-10px;
-    color:white;
-    animation:fall linear infinite;
-    z-index:1;
-}
-@keyframes fall{
-    to{transform:translateY(110vh);}
-}
-
-/* SANTA TRAIN */
-.santa-train{
-    position:fixed;
-    bottom:30px;
-    left:-350px;
-    width:300px;
-    animation:trainMove 20s linear infinite;
-    z-index:2;
-    pointer-events:none;
-}
-.santa-train img{
-    width:100%;
-    filter:drop-shadow(0 10px 15px rgba(0,0,0,.4));
-}
-@keyframes trainMove{
-    from{left:-350px;}
-    to{left:110%;}
-}
-
-/* POHON */
-.tree{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    font-size:70px;
-    animation:glow 2s infinite;
-    z-index:2;
-}
-@keyframes glow{
-    0%,100%{transform:scale(1);}
-    50%{transform:scale(1.1);}
-}
-
-/* KONTEN */
-.container{
-    position:relative;
-    z-index:5;
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-}
-.subtitle{margin-bottom:30px;}
-
-/* AMPLOP */
-.envelope{
-    position:relative;
-    width:220px;
-    height:140px;
-    cursor:pointer;
-}
-.body{
-    width:100%;
-    height:100%;
-    background:white;
-    border-radius:0 0 20px 20px;
-}
-.flap{
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:#ffd6d6;
-    clip-path:polygon(0 0,50% 55%,100% 0);
-    transform-origin:top;
-    transition:.8s ease;
-}
-.paper{
-    position:absolute;
-    width:180px;
-    height:110px;
-    background:white;
-    left:50%;
-    bottom:10px;
-    transform:translateX(-50%);
-    border-radius:10px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:30px;
-    transition:1s ease;
-}
-.envelope.open .flap{
-    transform:rotateX(180deg);
-}
-.envelope.open .paper{
-    transform:translate(-50%,-120%);
-}
-
-/* SURAT */
-.letter-wrapper{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.75);
-    display:none;
-    justify-content:center;
-    align-items:center;
-    z-index:10;
-}
-.letter{
-    background:white;
-    color:#333;
-    padding:30px;
-    width:90%;
-    max-width:380px;
-    border-radius:20px;
-    text-align:center;
-    animation:zoomIn 1s ease;
-}
-@keyframes zoomIn{
-    from{transform:scale(.7);opacity:0;}
-    to{transform:scale(1);opacity:1;}
-}
-
-/* LAMPU NATAL */
-.christmas-lights{
-    border:6px solid transparent;
-    border-image:repeating-linear-gradient(
-        45deg,
-        red 0 10px,
-        yellow 10px 20px,
-        green 20px 30px,
-        blue 30px 40px
-    ) 10;
-    animation:blink 1s infinite alternate;
-}
-@keyframes blink{
-    from{filter:brightness(1);}
-    to{filter:brightness(1.4);}
-}
-
-.signature{
-    margin-top:20px;
-    text-align:center;
-    font-style:italic;
-    color:#b30000;
-    font-size:14px;
-}
-
-button{
-    margin-top:20px;
-    padding:10px 20px;
-    background:#b30000;
-    color:white;
-    border:none;
-    border-radius:20px;
-    cursor:pointer;
-}
-</style>
+    <meta charset="UTF-8">
+    <title>Hadiah Natal 🎄</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- SALJU -->
-<div id="snow-container"></div>
+<div class="snow" id="snow"></div>
 
-<!-- SANTA -->
-<div class="santa-train">
-    <img src="santa-train.png" alt="Santa Train">
+<div class="santa">
+    <img src="santa.png" alt="Santa">
 </div>
 
-<!-- POHON -->
-<div class="tree">🎄</div>
-
-<!-- KONTEN -->
-<div class="container">
-    <h1>🎄 Merry Christmas 🎄</h1>
-    <p class="subtitle">Klik amplopnya ya sayang…</p>
-
-    <div class="envelope" id="envelope" onclick="openEnvelope()">
-        <div class="flap"></div>
-        <div class="paper">💌</div>
-        <div class="body"></div>
-    </div>
+<div class="start" id="start">
+    <h1>Hadiah Natal Untukmu 🎄</h1>
+    <button onclick="openLetter()">Buka Hadiah 💝</button>
 </div>
 
-<!-- SURAT -->
-<div class="letter-wrapper" id="letter">
-    <div class="letter christmas-lights">
-        <h2>Untuk Kamu ❤️</h2>
+<div class="letter" id="letter">
+    <div class="card">
+        <h2>Selamat Natal Sayangku 🎄✨</h2>
         <p>
-            Selamat Natal sayangku 🎄✨<br>
-            Terima kasih sudah hadir dalam hidupku.<br>
-            Kamu adalah hadiah terindah yang pernah Tuhan kirimkan untukku.<br>
+            Terima kasih sudah hadir dalam hidupku.<br><br>
+            Kamu adalah hadiah terindah yang pernah Tuhan kirimkan untukku.<br><br>
             Aku bersyukur setiap hari karena bisa mengenalmu, mencintaimu,
-            dan berjalan bersamamu.
-            <br><br>
+            dan berjalan bersamamu.<br><br>
             Semoga Natal ini membawa kebahagiaan,
-            kehangatan, dan cinta yang selalu tumbuh di antara kita.
-            Aku sayang kamu, hari ini, besok, dan selamanya ❤️
+            kehangatan, dan cinta yang selalu tumbuh di antara kita.<br><br>
+            <b>Aku sayang kamu, hari ini, besok, dan selamanya ❤️</b>
         </p>
 
-        <p class="signature">
-            dari seseorang yang memperjuangkan kamu
-        </p>
-
-        <button onclick="closeLetter()">Peluk Aku 🤍</button>
+        <div class="lights">
+            <span class="l1"></span>
+            <span class="l2"></span>
+            <span class="l3"></span>
+            <span class="l4"></span>
+            <span class="l5"></span>
+            <span class="l6"></span>
+            <div class="root"></div>
+        </div>
     </div>
 </div>
 
-<script>
-// SALJU
-const snowContainer=document.getElementById("snow-container");
-for(let i=0;i<40;i++){
-    const s=document.createElement("div");
-    s.className="snow";
-    s.innerHTML="❄";
-    s.style.left=Math.random()*100+"vw";
-    s.style.fontSize=(Math.random()*10+10)+"px";
-    s.style.animationDuration=(Math.random()*5+5)+"s";
-    snowContainer.appendChild(s);
-}
+<audio id="bell" src="bell.mp3"></audio>
 
-// AMPLOP
-function openEnvelope(){
-    document.getElementById("envelope").classList.add("open");
-    setTimeout(()=>{
-        document.getElementById("letter").style.display="flex";
-    },1200);
-}
-function closeLetter(){
-    document.getElementById("letter").style.display="none";
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
