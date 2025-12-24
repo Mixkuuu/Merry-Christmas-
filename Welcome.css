@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+
+body{
+    background:linear-gradient(#020111,#0b1d3a);
+    height:100vh;
+    overflow:hidden;
+    color:white;
+}
+
+.welcome{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.santa{
+    width:260px;
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{50%{transform:translateY(-15px)}}
+
+h1{
+    font-family:Great Vibes,cursive;
+    font-size:48px;
+    margin:20px 0;
+}
+
+button{
+    padding:14px 32px;
+    border:none;
+    border-radius:30px;
+    background:gold;
+    cursor:pointer;
+}
+
+/* SALJU */
+.snow{position:absolute;width:100%;height:100%;pointer-events:none}
+.snow span{
+    position:absolute;
+    top:-10px;
+    width:5px;
+    height:5px;
+    background:white;
+    border-radius:50%;
+    animation:fall linear infinite;
+}
+@keyframes fall{to{transform:translateY(110vh)}}
