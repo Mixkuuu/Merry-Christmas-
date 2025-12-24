@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap');
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Poppins,sans-serif;
+}
 
 body{
     background:linear-gradient(#020111,#0b1d3a);
@@ -9,6 +14,7 @@ body{
     color:white;
 }
 
+/* CONTAINER */
 .container{
     position:absolute;
     inset:0;
@@ -18,17 +24,7 @@ body{
     align-items:center;
 }
 
-.box{
-    background:gold;
-    color:#333;
-    padding:20px 30px;
-    border-radius:20px;
-    cursor:pointer;
-    animation:pulse 2s infinite;
-}
-
-@keyframes pulse{50%{transform:scale(1.05)}}
-
+/* UI SURAT */
 .letter{
     background:white;
     color:#333;
@@ -36,25 +32,62 @@ body{
     max-width:420px;
     padding:30px;
     border-radius:20px;
-    margin-top:20px;
+
+    /* posisi awal (di atas layar) */
     opacity:0;
-    transform:scale(0.8);
-    transition:1.2s;
+    transform:translateY(-350px) rotate(-10deg) scale(0.9);
+
+    transition:
+        transform 1.2s cubic-bezier(.25,1.6,.5,1),
+        opacity .6s ease;
+
+    box-shadow:0 25px 45px rgba(0,0,0,.45);
+    position:relative;
 }
 
+/* SURAT DILEMPAR KE MEJA */
 .letter.show{
     opacity:1;
-    transform:scale(1);
+    transform:translateY(0) rotate(0deg) scale(1);
 }
 
+/* JUDUL SURAT */
 .letter h2{
-    font-family:Great Vibes,cursive;
+    font-family:'Great Vibes',cursive;
     color:#b30000;
+    font-size:32px;
     margin-bottom:15px;
+    text-align:center;
+}
+
+/* ISI SURAT */
+.letter p{
+    line-height:1.6;
+    font-size:15px;
+}
+
+/* LAMPU NATAL */
+.letter::before{
+    content:'';
+    position:absolute;
+    top:-15px;
+    left:0;
+    right:0;
+    height:30px;
+    background:
+        radial-gradient(circle, red 20%, transparent 21%) 0 0/40px 30px,
+        radial-gradient(circle, yellow 20%, transparent 21%) 20px 0/40px 30px,
+        radial-gradient(circle, lime 20%, transparent 21%) 10px 15px/40px 30px;
 }
 
 /* SALJU */
-.snow{position:absolute;width:100%;height:100%;pointer-events:none}
+.snow{
+    position:absolute;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+}
+
 .snow span{
     position:absolute;
     top:-10px;
@@ -62,6 +95,12 @@ body{
     height:5px;
     background:white;
     border-radius:50%;
+    opacity:.8;
     animation:fall linear infinite;
 }
-@keyframes fall{to{transform:translateY(110vh)}}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh);
+    }
+}
