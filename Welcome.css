@@ -9,6 +9,7 @@ body{
     color:white;
 }
 
+/* CONTAINER */
 .welcome{
     position:absolute;
     inset:0;
@@ -19,25 +20,43 @@ body{
     text-align:center;
 }
 
+/* SANTA */
 .santa{
-    width:260px;
-    animation:float 3s ease-in-out infinite;
+    max-width:80vw;       /* maksimal 80% lebar layar */
+    max-height:60vh;      /* maksimal 60% tinggi layar */
+    width:auto;
+    height:auto;
+    animation:float 3s ease-in-out infinite; /* hanya naik-turun */
+    object-fit:contain;
+    position:relative;
 }
 
-@keyframes float{50%{transform:translateY(-15px)}}
+/* FLOAT UP/DOWN */
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0);}
+}
 
+/* JUDUL */
 h1{
     font-family:Great Vibes,cursive;
     font-size:48px;
     margin:20px 0;
 }
 
+/* TOMBOL */
 button{
     padding:14px 32px;
     border:none;
     border-radius:30px;
     background:gold;
     cursor:pointer;
+    box-shadow:0 0 15px gold;
+    transition:.3s;
+}
+button:hover{
+    transform:scale(1.05);
 }
 
 /* SALJU */
