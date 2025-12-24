@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+
+body{
+    background:linear-gradient(#020111,#0b1d3a);
+    height:100vh;
+    overflow:hidden;
+    color:white;
+}
+
+.container{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.box{
+    background:gold;
+    color:#333;
+    padding:20px 30px;
+    border-radius:20px;
+    cursor:pointer;
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{50%{transform:scale(1.05)}}
+
+.letter{
+    background:white;
+    color:#333;
+    width:85%;
+    max-width:420px;
+    padding:30px;
+    border-radius:20px;
+    margin-top:20px;
+    opacity:0;
+    transform:scale(0.8);
+    transition:1.2s;
+}
+
+.letter.show{
+    opacity:1;
+    transform:scale(1);
+}
+
+.letter h2{
+    font-family:Great Vibes,cursive;
+    color:#b30000;
+    margin-bottom:15px;
+}
+
+/* SALJU */
+.snow{position:absolute;width:100%;height:100%;pointer-events:none}
+.snow span{
+    position:absolute;
+    top:-10px;
+    width:5px;
+    height:5px;
+    background:white;
+    border-radius:50%;
+    animation:fall linear infinite;
+}
+@keyframes fall{to{transform:translateY(110vh)}}
